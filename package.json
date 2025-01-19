@@ -1,0 +1,28 @@
+{
+  "name": "backend-engineering-exercise",
+  "version": "0.0.1",
+  "description": "simple solution to the problem in 2 hours",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "run": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/REIGEN06/Backend-Engineering-Exercise.git"
+  },
+  "keywords": [
+    "backend",
+    "typescript"
+  ],
+  "author": "Daniel I.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/REIGEN06/Backend-Engineering-Exercise/issues"
+  },
+  "homepage": "https://github.com/REIGEN06/Backend-Engineering-Exercise#readme",
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}
