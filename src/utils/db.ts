@@ -1,11 +1,12 @@
 import {Checkout} from "../domains/checkout/checkout.interfaces";
+import { Event } from "../domains/events/event.interfaces";
 
-interface InMemoryDatabase {
+interface InMemoryDB {
   events: Event[],
   checkouts: Checkout[]
 }
 
-export const db: InMemoryDatabase = {
+export const db: InMemoryDB = {
   events: [],
   checkouts: []
 }

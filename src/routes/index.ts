@@ -1,9 +1,8 @@
-import { Router, Request, Response } from 'express';
+import { Router } from "express";
+import { TicketController } from "../controllers/ticket.controller";
 
 const router = Router();
 
-router.post('/checkout', async (req: Request, res: Response) => {
+router.post("/checkout", TicketController.checkout);
 
-})
-
-export default router
+export default router;
