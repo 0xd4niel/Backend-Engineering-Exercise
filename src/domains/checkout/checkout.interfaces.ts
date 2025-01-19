@@ -1,4 +1,6 @@
-interface Checkout {
+import { TicketingError } from "../tickets/ticket.interfaces";
+
+export interface Checkout {
   id: string;
   eventId: string;
   ticketTypeId: string;
@@ -7,20 +9,20 @@ interface Checkout {
   expiresAt?: Date;
 }
 
-enum CheckoutStatus {
+export enum CheckoutStatus {
   PENDING = 'PENDING',
   COMPLETED = 'COMPLETED',
   EXPIRED = 'EXPIRED'
 }
 
-interface PurchaseRepository {
+export interface PurchaseRepository {
   create(purchase: Omit<Checkout, 'id'>): Promise<Checkout>;
   findById(id: string): Promise<Checkout | null>;
   update(id: string, purchase: Partial<Checkout>): Promise<Checkout>;
   findPendingByEventId(eventId: string): Promise<Checkout[]>;
 }
 
-class SoldOutError extends TicketingError {
+export class SoldOutError extends TicketingError {
   constructor(eventId: string) {
     super(
       `Event ${eventId} is sold out`,

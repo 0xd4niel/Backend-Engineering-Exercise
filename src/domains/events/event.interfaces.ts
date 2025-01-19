@@ -1,4 +1,6 @@
-interface Event {
+import {TicketType} from "../tickets/ticket.interfaces";
+
+export interface Event {
   id: string;
   name: string;
   date: Date;
@@ -6,7 +8,7 @@ interface Event {
   ticketTypes: TicketType[];
 }
 
-interface EventRepository {
+export interface EventRepository {
   create(event: Omit<Event, 'id'>): Promise<Event>;
   findById(id: string): Promise<Event | null>;
   updateTicketInventory(eventId: string, ticketTypeId: string, quantity: number): Promise<void>;

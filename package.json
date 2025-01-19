@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "run": "node dist/index.js",
+    "dev": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +24,10 @@
   },
   "homepage": "https://github.com/REIGEN06/Backend-Engineering-Exercise#readme",
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
   }
 }

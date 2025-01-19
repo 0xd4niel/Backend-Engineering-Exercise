@@ -1,4 +1,4 @@
-interface TicketType {
+export interface TicketType {
   id: string;
   name: string;
   price: number;
@@ -6,7 +6,7 @@ interface TicketType {
   remaining: number;
 }
 
-class TicketingError extends Error {
+export class TicketingError extends Error {
   constructor(
     message: string,
     public code: string,
