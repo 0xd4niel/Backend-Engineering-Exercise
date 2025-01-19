@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
-    "run": "node dist/index.js",
+    "start": "node dist/index.js",
     "dev": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,11 +23,12 @@
     "url": "https://github.com/REIGEN06/Backend-Engineering-Exercise/issues"
   },
   "homepage": "https://github.com/REIGEN06/Backend-Engineering-Exercise#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "uuid": "^11.0.5"
+  },
   "devDependencies": {
     "@types/express": "^5.0.0",
     "typescript": "^5.7.3"
-  },
-  "dependencies": {
-    "express": "^4.21.2"
   }
 }

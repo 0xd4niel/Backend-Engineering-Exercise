@@ -1,10 +1,13 @@
 import {Checkout, CheckoutStatus, PurchaseRepository} from "../domains/checkout/checkout.interfaces";
 import {db} from "../utils/db";
+import { v4 as uuidv4 } from "uuid";
 
 export class InMemoryPurchaseRepository implements PurchaseRepository {
+  // in a real-world scenario, concurrency is typically handled by database transactions or row-level locks.
+  // but yeah, there's no true concurrency protection in this demo
   async create(purchaseData: Omit<Checkout, "id">): Promise<Checkout> {
     const newCheckout: Checkout = {
-      id: (Date.now() + Math.random()).toString(), // replace with uuid package
+      id: uuidv4(),
       ...purchaseData,
     };
 

@@ -20,8 +20,28 @@ export class TicketService {
     const event = await this.eventRepository.findById(eventId);
 
     if (!event) {
-      throw new Error(eventId);
+      throw new Error(
+        `Event ${eventId} not found`);
     }
+
+    // I would also add a search for the same running process here like:
+
+    // const [
+    //     pending_request,
+    // ] = await db.query('get_waiting_request', {
+    //     id: eventId,
+    // }, {
+    //     traceId: this.req.traceId,
+    // });
+    //
+    // if (pending_request) {
+    //     checkout = pending_request;
+    // } else {
+    //     all that stuff that I wrote below
+    // }
+
+    // basically I would like to use event driven architecture here
+    // so I would set a listener to know when the status changes to "completed" or "expired"
 
     const ticketType = event.ticketTypes.find(tt => tt.id === ticketTypeId);
 

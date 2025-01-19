@@ -1,4 +1,4 @@
-import {createApp} from "./app";
+import {createApp} from "./app"; // add eslint for gaps
 
 const PORT = process.env.PORT || 3000;
 const app = createApp();
