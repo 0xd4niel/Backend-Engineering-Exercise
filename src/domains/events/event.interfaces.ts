@@ -8,6 +8,7 @@ export interface Event {
   ticketTypes: TicketType[];
 }
 
+// maybe it's a good idea to implemet this Repository from baseRepository with default create and etc. methods
 export interface EventRepository {
   create(event: Omit<Event, 'id'>): Promise<Event>;
   findById(id: string): Promise<Event | null>;

@@ -26,7 +26,7 @@ export class SoldOutError extends TicketingError {
   constructor(eventId: string) {
     super(
       `Event ${eventId} is sold out`,
-      'TICKETS_SOLD_OUT',
+      'TICKETS_SOLD_OUT', // this should be a constant
       400
     );
   }

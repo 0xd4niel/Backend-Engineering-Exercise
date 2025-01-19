@@ -1,8 +1,8 @@
 import {TicketingError} from "../tickets/ticket.interfaces";
 import { EventRepository } from "../events/event.interfaces";
-import { PurchaseRepository, Checkout, CheckoutStatus} from "../checkout/checkout.interfaces";
+import {PurchaseRepository, Checkout, CheckoutStatus, SoldOutError} from "../checkout/checkout.interfaces";
 
-class TicketService {
+export class TicketService {
   constructor(
     private eventRepository: EventRepository,
     private purchaseRepository: PurchaseRepository
@@ -23,23 +23,19 @@ class TicketService {
       throw new Error(eventId);
     }
 
-    const ticketType = event.ticketTypes.find(t => t.id === ticketTypeId);
+    const ticketType = event.ticketTypes.find(tt => tt.id === ticketTypeId);
 
     if (!ticketType) {
       throw new TicketingError(
         `Ticket type ${ticketTypeId} not found for event ${eventId}`,
-        "TICKET_TYPE_NOT_FOUND",
+        "TICKET_TYPE_NOT_FOUND", // this should be a constant
         404
       );
     }
 
     // we can change this error type to specific if frontend needs it
     if (ticketType.remaining < quantity) {
-      throw new TicketingError(
-        `Insufficient tickets remaining for event ${eventId}`,
-        "TICKETS_SOLD_OUT",
-        400
-      );
+      throw new SoldOutError(eventId)
     }
 
     const expiresInMinutes = 5;
@@ -65,10 +61,5 @@ class TicketService {
     );
 
     return checkout;
-
-    // Implement purchase logic with proper error handling
-    // Consider concurrent purchases
-    // Handle inventory updates atomically
-    // Implement reservation timeout
   }
 }
